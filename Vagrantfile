@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
     slave.vm.network "private_network", ip: "192.168.57.11"
     slave.vm.provision "shell", name: "slave-dns",inline: <<-SHELL
       cp -v /vagrant/named /etc/default/
+      cp -v /vagrant/named.conf.options /etc/bind
       cp -v /vagrant/files/slave/named.conf.local /etc/bind
     SHELL
   end
